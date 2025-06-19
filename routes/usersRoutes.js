@@ -2,6 +2,7 @@ const express = require('express');
 const pgclient = require('../db');
 const router = express.Router();
 
+//Updates a user’s profile fields 
 router.put('/:userId', async (req, res) => {
   const { userId } = req.params;
   const { name, height, weight, coach_id, phone } = req.body;
