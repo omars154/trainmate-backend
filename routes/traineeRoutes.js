@@ -11,7 +11,7 @@ router.get('/:userId/workouts', async (req, res) => {
       [userId]
     );
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const formatted = Object.fromEntries(days.map(day => [day, []]));
+    const formatted = Object.fromEntries(days.map(day => [day, []])); //empty array for each day
 
     result.rows.forEach(row => {
       formatted[row.day]?.push({
@@ -22,7 +22,7 @@ router.get('/:userId/workouts', async (req, res) => {
         target: row.target,
       });
     });
-
+    //group exercises by the day making it formatted
     res.json(formatted);
   } catch (err){
     console.log(err);

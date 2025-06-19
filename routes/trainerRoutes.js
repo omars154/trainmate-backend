@@ -56,15 +56,13 @@ router.post('/:userId/workouts/:day/exercises', async (req, res) => {
       'INSERT INTO exercises (trainee_id, day, name, body_part, equipment, target) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
       [userId, day, exerciseName, bodyPart, equipment, target]
     );
-
-    const ex = result.rows[0];
-    res.json({
-      id: ex.id,
-      name: ex.name,
-      bodyPart: ex.body_part,
-      equipment: ex.equipment,
-      target: ex.target,
-    });
+  res.json({
+  id: result.rows[0].id,
+  name: result.rows[0].name,
+  bodyPart: result.rows[0].body_part,
+  equipment: result.rows[0].equipment,
+  target: result.rows[0].target,
+  });
   } catch (err){
     console.log(err);
   }
