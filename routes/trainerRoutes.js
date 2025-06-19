@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:coachId/users',trainerAuth , async (req, res) => {
+router.get('/:coachId/users', async (req, res) => {
   const { coachId } = req.params;
 
   try {
@@ -31,7 +31,7 @@ router.get('/:coachId/users',trainerAuth , async (req, res) => {
   }
 });
 
-router.get('/:id',trainerAuth , async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pgclient.query('SELECT * FROM coaches WHERE id = $1', [id]);
@@ -44,7 +44,7 @@ router.get('/:id',trainerAuth , async (req, res) => {
   }
 });
 
-router.post('/:userId/workouts/:day/exercises', trainerAuth, async (req, res) => {
+router.post('/:userId/workouts/:day/exercises', async (req, res) => {
   const { userId, day } = req.params;
   const { exerciseId, exerciseName, bodyPart, equipment, target } = req.body;
 
@@ -67,7 +67,7 @@ router.post('/:userId/workouts/:day/exercises', trainerAuth, async (req, res) =>
   }
 });
 
-router.delete('/:userId/workouts/:day/exercises/:exerciseId', trainerAuth, async (req, res) => {
+router.delete('/:userId/workouts/:day/exercises/:exerciseId', async (req, res) => {
   const { exerciseId } = req.params;
   try {
     const result = await pgclient.query('DELETE FROM exercises WHERE id = $1 RETURNING *', [exerciseId]);
