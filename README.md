@@ -175,7 +175,7 @@ Logs in an existing user.
 
 ### 🧑‍🏫 Trainer Routes
 
-**Base URL**: `/api`
+**Base URL**: `/api/trainer`
 
 | Method | Endpoint                | Description                        |
 |--------|-------------------------|------------------------------------|
@@ -192,32 +192,14 @@ Logs in an existing user.
     }
 ]
 ```
-
-
-CREATE TABLE coaches (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT UNIQUE,
-  password TEXT,
-  phone TEXT
-);
-
-CREATE TABLE trainees (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT UNIQUE,
-  password TEXT,
-  height INTEGER,
-  weight INTEGER,
-  coach_id INTEGER REFERENCES coaches(id)
-);
-
-CREATE TABLE workouts (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES trainees(id),
-  day_of_week TEXT,
-  name TEXT,
-  body_part TEXT,
-  equipment TEXT,
-  target TEXT
-);
+#### 🔸 GET /api/trainer/:coachId/users
+```json
+[
+    {
+    "id": 102,
+    "name": "Jane Trainee",
+    "age": 25,
+    "initials": "JT"
+  }
+]
+```
