@@ -1,7 +1,7 @@
 const express = require('express');
 const pgclient = require('../db');
 const router = express.Router();
-import trainerAuth from '../middleware/traineeAuth';
+const trainerAuth = require('../middleware/traineeAuth');
 
 router.get('/', async (req, res) => {
   try {
