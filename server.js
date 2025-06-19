@@ -28,5 +28,3 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-//to add this feature we can make the user choose the trainer and send a request to the trainer that this user has sent 
-// you a follow do you want to accept him or not? if not view delete buton from dashboard

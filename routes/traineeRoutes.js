@@ -2,6 +2,7 @@ const express = require('express');
 const pgclient = require('../db');
 const router = express.Router();
 
+//Fetches all exercises assigned to a trainee
 router.get('/:userId/workouts', async (req, res) => {
   const { userId } = req.params;
   try {
@@ -28,6 +29,7 @@ router.get('/:userId/workouts', async (req, res) => {
   }
 });
 
+//Returns all coache
 router.get('/coaches', async (req, res) => {
   try {
     const result = await pgclient.query('SELECT id, name FROM coaches');
@@ -37,6 +39,7 @@ router.get('/coaches', async (req, res) => {
   }
 });
 
+//Fetches the full profile 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {

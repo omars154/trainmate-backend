@@ -2,25 +2,7 @@ const express = require('express');
 const pgclient = require('../db');
 const router = express.Router();
 
-// router.get('/:userId', async (req, res) => {
-//   const { userId } = req.params;
-//   try {
-//     const coach = await pgclient.query('SELECT * FROM coaches WHERE id = $1', [userId]);
-//     if (coach.rows.length) return res.json({ ...coach.rows[0], role: 'trainer' });
-
-//     const trainee = await pgclient.query(`
-//       SELECT t.*, c.name AS coach_name
-//       FROM trainees t
-//       LEFT JOIN coaches c ON t.coach_id = c.id
-//       WHERE t.id = $1
-//     `, [userId]);
-//     if (trainee.rows.length) return res.json({ ...trainee.rows[0], role: 'trainee' });
-
-//   } catch (err){
-//     console.log(err);
-//   }
-// });
-
+//Updates a user’s profile fields 
 router.put('/:userId', async (req, res) => {
   const { userId } = req.params;
   const { name, height, weight, coach_id, phone } = req.body;
